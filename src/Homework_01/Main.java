@@ -20,20 +20,19 @@ public class Main {
         privateKeyPart1 = (firstPrime - Long.valueOf("1")) * (secondPrime - Long.valueOf("1"));
 
         publicKeyPart2 = mathematics.coPrime(privateKeyPart1); // publicKeyPart2 - coprimeToM
-
-        // System.out.println("Coprime to the "+m+" is "+coprimeToM);
-
         privateKeyPart2 = mathematics.demodM(privateKeyPart1, publicKeyPart2); // privateKey - d
 
-        System.out.println("Public key is: " + publicKeyPart1 + " " + publicKeyPart2);
+        System.out.println("Public key is: n:" + publicKeyPart1 + " e:" + publicKeyPart2);
+        System.out.println("Private key is: m:" + privateKeyPart1 + " d:" + privateKeyPart2);
 
-        System.out.println("Private key is: " + privateKeyPart1 + " " + privateKeyPart2);
-
-        System.out.println("Enter Message:");
+        System.out.println("\nEnter Message:");
         message = Long.parseLong(reader.readLine());
-        long cipher = mathematics.getModulus(message, publicKeyPart2, publicKeyPart1);
-        System.out.println("Cipher is: " + cipher +"\n");
-        System.out.println("Decrypted message is: " + mathematics.getModulus(cipher,privateKeyPart2,publicKeyPart1));
         reader.close();
+
+        long encryptedMessage = mathematics.getModulus(message, publicKeyPart2, publicKeyPart1);
+        System.out.println("Cipher is: " + encryptedMessage +"\n");
+        System.out.println("Decrypted message is: " + mathematics.getModulus(encryptedMessage,privateKeyPart2,publicKeyPart1));
+
+        System.out.println("Cracked message is: " + mathematics.bruteforce(encryptedMessage,publicKeyPart1,publicKeyPart2));
     }
 }
