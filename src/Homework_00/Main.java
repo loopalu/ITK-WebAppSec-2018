@@ -11,13 +11,13 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         long publicPrimeModulus, publicPrimeBase, privateKey1, privateKey2;
 
-        System.out.println("Enter first prime number:\n");
+        System.out.println("Enter first prime number:");
         publicPrimeModulus = Long.parseLong(reader.readLine());
-        System.out.println("Enter second prime number:\n");
+        System.out.println("Enter second prime number:");
         publicPrimeBase = Long.parseLong(reader.readLine());
-        System.out.println("Enter first secret number:\n");
+        System.out.println("Enter first secret number:");
         privateKey1 = Long.parseLong(reader.readLine());
-        System.out.println("Enter second secret number:\n");
+        System.out.println("Enter second secret number:");
         privateKey2 = Long.parseLong(reader.readLine());
         reader.close();
 
